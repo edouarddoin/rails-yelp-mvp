@@ -1,0 +1,19 @@
+<div class= "container">
+  <h1><%= @restaurant.name %></h1>
+  Address <%= @restaurant.address %>
+  Category <%= @restaurant.category %>
+  <div>
+    <h4>Review</h4>
+    <% @restaurant.reviews.each do |review| %>
+    <%= review.rating %>
+    <%= review.content %>
+  </div>
+  <% end %>
+
+  <div class= "mt-3 p-3">
+    <%= link_to "new review", new_restaurant_review_path(@restaurant) %>
+    <%= link_to 'Edit your restaurant', edit_restaurant_path(@restaurant), class: 'btn btn-primary' %>
+    <%= link_to 'Delete this restaurant', restaurant_path(@restaurant), data: {turbo_method: 'delete'}, class: 'btn btn-primary' %>
+    <%= link_to 'Back', restaurants_path %>
+  </div>
+</div>
